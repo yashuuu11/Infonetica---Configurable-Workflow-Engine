@@ -1,13 +1,13 @@
 # Infonetica - Configurable Workflow Engine
 
-[cite_start]This project is a take-home exercise for the Software Engineer Intern role at Infonetica[cite: 1]. [cite_start]It's a minimal backend service built with .NET 8 that implements a configurable state-machine API[cite: 4, 5].
+This project is a take-home exercise for the Software Engineer Intern role at Infonetica. It's a minimal backend service built with .NET 8 that implements a configurable state-machine API.
 
 ## Core Features
 
-* [cite_start]Define dynamic workflows with states and actions[cite: 5].
-* [cite_start]Create and manage instances of those workflows[cite: 6].
-* [cite_start]Execute actions to transition instances between states, with full validation[cite: 7].
-* [cite_start]Inspect all definitions and running instances via a RESTful API[cite: 8].
+* Define dynamic workflows with states and actions.
+* Create and manage instances of those workflows.
+* Execute actions to transition instances between states, with full validation.
+* Inspect all definitions and running instances via a RESTful API.
 
 ## Quick Start
 
@@ -19,7 +19,7 @@
 
 1.  Clone the repository.
 2.  Navigate to the project directory.
-3.  [cite_start]Run the following command to start the service[cite: 40]:
+3.  Run the following command to start the service:
     ```bash
     dotnet run
     ```
@@ -72,10 +72,10 @@ curl -X GET "http://localhost:5000/instances/{INSTANCE_ID}"
 
 ## Assumptions & Shortcuts
 
-[cite_start]In the interest of meeting the ~2 hour time-box, the following assumptions and shortcuts were made[cite: 28, 41]:
+In the interest of meeting the ~2 hour time-box, the following assumptions and shortcuts were made:
 
 * **Single-File Project**: The entire application (models, service, and API endpoints) is in `Program.cs` for simplicity. In a larger project, I would separate these into different files and projects (e.g., `Domain`, `Application`, `Infrastructure`).
-* [cite_start]**Simple Persistence**: Persistence is entirely in-memory using thread-safe `ConcurrentDictionary` collections, as suggested[cite: 24]. Data is lost on restart.
-* [cite_start]**Basic Validation**: Implemented all required validation rules[cite: 21, 22]. More robust validation (e.g., ensuring all `toState` and `fromStates` IDs correspond to actual defined states) would be added with more time.
-* [cite_start]**Enabled/Disabled Flags**: The `enabled` flags on `State` and `Action` are part of the models but are not currently used in the logic for validation[cite: 11]. This would be a straightforward extension.
+* **Simple Persistence**: Persistence is entirely in-memory using thread-safe `ConcurrentDictionary` collections, as suggested. Data is lost on restart.
+* **Basic Validation**: Implemented all required validation rules. More robust validation (e.g., ensuring all `toState` and `fromStates` IDs correspond to actual defined states) would be added with more time.
+* **Enabled/Disabled Flags**: The `enabled` flags on `State` and `Action` are part of the models but are not currently used in the logic for validation. This would be a straightforward extension.
 * **Error Handling**: Error handling is basic, returning standard HTTP status codes and messages. A production system would have more structured error responses.
